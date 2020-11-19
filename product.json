@@ -1,0 +1,44 @@
+[
+{
+"name" : "GALAX GTX 1060 6GB",
+"description" : "GPU dari GALAX menyediakan fitur untuk Overclock",
+"price" : 2300000,
+"image" : "http://192.168.0.137/pcstore/img/galax-gtx-1060-6gb.jpg",
+"rating" : 0
+},
+{
+"name" : "MSI H310M PRO-VH PLUS",
+"description" : "Motherboard dari MSI untuk intel generasi 8 dan 9",
+"price" : 1000000,
+"image" : "http://192.168.0.137/pcstore/img/pro-vh-plus.jpg",
+"rating" : 0
+},
+{
+"name" : "Tecware NEXUS M",
+"description" : "Casing PC premium dari tecware dengan harga terjangkau",
+"price" : 300000,
+"image" : "http://192.168.0.137/pcstore/img/nexus-m.jpg",
+"rating" : 2
+},
+{
+"name" : "CORSAIR HS50Pro",
+"description" : "Headseat Gaming dari Corsair bisa di semua platform gaming PC, XBOX ONE, PS4, dan Mobile",
+"price" : 850000,
+"image" : "http://192.168.0.137/pcstore/img/nexus-m.jpg",
+"rating" : 0
+},
+{
+"name" : "Rexus Daxa M71",
+"description" : "Keyboard Gaming mechanical 60% dari rexus dengan koneksi ganda yaitu wireless dan wired",
+"price" : 750000,
+"image" : "http://192.168.0.137/pcstore/img/rexus-m71.jpg",
+"rating" : 0
+},
+{
+"name" : "MSI B550M",
+"description" : "Motherboard untuk am4 amd dari MSI dengan chipset B550",
+"price" : 1200000,
+"image" : "http://192.168.0.137/pcstore/img/msi-b550m.jpg",
+"rating" : 1
+}
+]

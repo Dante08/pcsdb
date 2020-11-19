@@ -1,0 +1,136 @@
+<?php
+// panggil koneksinya
+require_once 'koneksi.php';
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PCSDB - Pelanggan </title>
+</head>
+<style> 
+  .logo{
+  float: left;
+  color: #08596A;
+  margin-left: 46px;
+  padding: 0px 38px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+.logo a{
+  text-decoration: none;
+  color: #FFFFFF;
+}
+.nav{
+  position: absolute;
+  top: 0;
+  left:  0;
+  margin: 0;
+  padding: 0;
+  height: 80px;
+  width: 100%;
+}
+.nav ul{
+  list-style: none;
+  cursor: pointer;
+  float: right;
+  margin-right: 140px;
+}
+.nav ul li {
+  list-style: none;
+  display: inline-block;
+  color:#FFFFFF;
+  font-family: 'Raleway', sans-serif;
+  padding: 15px 15px;
+  font-weight: 400;
+}
+.nav ul li:hover{
+  border-bottom: 3px solid #08596A;
+  transition: all .3s ease;
+}
+  #submit-btn {
+  background: -webkit-linear-gradient(right, #a6f77b, #2dbd6e);
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 1px 8px #24c64f;
+  cursor: pointer;
+  color: white;
+  font-family: "Raleway SemiBold", sans-serif;
+  height: 20.3px;
+  margin: 0 auto;
+  margin-top: 50px;
+  transition: 0.25s;
+  width: 153px;
+}
+#submit-btn:hover {
+  box-shadow: 0px 1px 18px #24c64f;
+}
+
+/*design table 1*/
+#table1 {
+    font-family: sans-serif;
+    color: #232323;
+    border-collapse: collapse;
+}
+ 
+#table1, th, td {
+    border: 0px solid #999;
+    padding: 8px 20px;
+}
+</style>
+<body>
+  <div class="nav">
+        <div class="logo">
+  <p>PCSTORE DATA BANK - Pelanggan</p>
+</div>
+</div>
+  
+  <!-- 
+  Create atau menambahkan data baru 
+  Data akan dikirimkan ke add.php untuk diproses
+  -->
+
+  <form method="post" action="add.php">
+    <input type="text" name="nama" placeholder="Nama user">
+    <input type="varchar" name="alamat" placeholder="alamat user">
+    <input type="varchar" name="username" placeholder="Username">
+    <input type="varchar" name="pass" placeholder="password">
+    <input id="submit-btn" type="submit" name="submit" value="Tambah Data">
+  </form>
+
+  <!-- Read atau menampilkan data dari database -->
+  <table class="table1" border="1">
+    <tr>
+      <th>No.</th> <th>Nama</th>
+      <th>Alamat</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th colspan="2">Aksi</th>
+    </tr>
+
+    <?php
+    // Tampilkan semua data
+    $q = $conn->query("SELECT * FROM pelanggan");
+
+    $no = 1; // nomor urut
+    while ($dt = $q->fetch_assoc()) :
+    ?>
+
+    <tr>  
+      <td><?= $no++ ?></td>
+      <td><?= $dt['nama'] ?></td>
+      <td><?= $dt['alamat'] ?></td>
+      <td><?= $dt['username'] ?></td>
+      <td><?= $dt['pass'] ?></td>
+      <td><a href="update.php?id=<?= $dt['id_plg'] ?>">Ubah</a></td>
+      <td><a href="delete.php?id=<?= $dt['id_plg'] ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')">Hapus</a></td>
+    </tr>
+
+    <?php
+    endwhile;
+    ?> 
+
+  </table>
+</body>
+</html>

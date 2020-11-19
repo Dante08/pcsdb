@@ -1,0 +1,79 @@
+<?php
+// panggil koneksinya
+require_once 'koneksi.php';
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PCSDB - Pesanan </title>
+</head>
+<style> 
+  #submit-btn {
+  background: -webkit-linear-gradient(right, #a6f77b, #2dbd6e);
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 1px 8px #24c64f;
+  cursor: pointer;
+  color: white;
+  font-family: "Raleway SemiBold", sans-serif;
+  height: 20.3px;
+  margin: 0 auto;
+  margin-top: 50px;
+  transition: 0.25s;
+  width: 153px;
+}
+#submit-btn:hover {
+  box-shadow: 0px 1px 18px #24c64f;
+}
+</style>
+<body>
+  <h1>PCSTORE DATA BANK - Pesanan</h1>
+  
+  <!-- 
+  Create atau menambahkan data baru 
+  Data akan dikirimkan ke add.php untuk diproses
+  -->
+  <form method="post" action="add.php">
+    <input type="text" name="nama" placeholder="Nama Pemesan">
+    <input type="varchar" name="tanggal" placeholder="tanggal pemesanan">
+    <input type="varchar" name="alamat" placeholder="Alamat Tujuan">
+    <input type="varchar" name="kurir" placeholder="Kurir">
+    <input id="submit-btn" type="submit" name="submit" value="Tambah Data">
+  </form><br/>
+
+  <!-- Read atau menampilkan data dari database -->
+  <table border="1">
+    <tr>
+      <th>No.</th> <th>Nama</th>
+      <th>Tanggal Pesan</th>
+      <th>Alamat Tujuan</th>
+      <th>Kurir</th>
+      <th colspan="2">Aksi</th>
+    </tr>
+
+    <?php
+    // Tampilkan semua data
+    $q = $conn->query("SELECT * FROM pesanan");
+
+    $no = 1; // nomor urut
+    while ($dt = $q->fetch_assoc()) :
+    ?>
+
+    <tr>  
+      <td><?= $no++ ?></td>
+      <td><?= $dt['nama'] ?></td>
+      <td><?= $dt['tanggal'] ?></td>
+      <td><?= $dt['alamat'] ?></td>
+      <td><?= $dt['kurir'] ?></td>
+      <td><a href="update.php?id=<?= $dt['id_psn'] ?>">Ubah</a></td>
+      <td><a href="delete.php?id=<?= $dt['id_psn'] ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')">Hapus</a></td>
+    </tr>
+
+    <?php
+    endwhile;
+    ?> 
+
+  </table>
+</body>
+</html>
